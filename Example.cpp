@@ -1,12 +1,11 @@
-#include <Assembly.h>
-#include <Memory.h>
-#include <StringFormatting.h>
 #include <stdint.h>
 
+#include <assembly>
 #include <iostream>
+#include <memory_util>
 
 int main() {
-    auto bytes = Memory::Bytes{Assembly::GetBytes([](Assembly::Code& code) {
+    auto bytes = MemoryUtil::Bytes{Assembly::GetBytes([](Assembly::Code& code) {
         BeginAssembly;
         code.mov(eax, 0x69);
         code.ret();
