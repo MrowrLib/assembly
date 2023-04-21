@@ -16,23 +16,68 @@ void Example() {
 }
 ```
 
-## Installation
-
-```lua
--- xmake
-add_repositories("MrowrLib https://github.com/MrowrLib/Packages.git")
-add_requires("assembly")
-```
-
-```cmake
-# CMake/vcpkg (coming soon)
-```
-
 ## What?
 
 Convenient way to generate and disassemble assembly code.
 
 Also simply a convenient way to use [xbyak](https://github.com/herumi/xbyak) and [zydis](https://github.com/zyantific/zydis).
+
+## Installation
+
+### xmake
+
+#### `xmake.lua`
+
+```lua
+add_repositories("MrowrLib https://github.com/MrowrLib/Packages.git")
+add_requires("assembly")
+
+target("Example")
+    add_packages("assembly")
+```
+
+### vcpkg
+
+#### `CMakeLists.txt`
+
+```cmake
+add_executable(Example main.cpp)
+
+# Find assembly and link it to your target
+find_package(assembly CONFIG REQUIRED)
+target_link_libraries(Example PRIVATE MrowrLib::assembly)
+```
+
+#### `vcpkg.json`
+
+```json
+{
+    "dependencies": ["mrowr-assembly"]
+}
+```
+
+#### `vcpkg-configuration.json`
+
+```json
+{
+    "default-registry": {
+        "kind": "git",
+        "repository": "https://github.com/microsoft/vcpkg.git",
+        "baseline": "95252eadd63118201b0d0df0b4360fa613f0de84"
+    },
+    "registries": [
+        {
+            "kind": "git",
+            "repository": "https://github.com/MrowrLib/Packages.git",
+            "baseline": "a8cd0e28173ef03864efe86028f4d40c1b9885ef",
+            "packages": ["mrowr-assembly"]
+        }
+    ]
+}
+```
+
+> _Update the default-registry baseline to the latest commit from https://github.com/microsoft/vcpkg_  
+> _Update the MrowrLib/Packages baseline to the latest commit from https://github.com/MrowrLib/Packages_  
 
 ## Why?
 
