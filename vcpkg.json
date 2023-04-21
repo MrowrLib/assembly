@@ -1,0 +1,3 @@
+{
+    "dependencies": ["xbyak", "zydis", "spdlog", "mrowr-memory-util"]
+}
