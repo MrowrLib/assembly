@@ -45,7 +45,7 @@ add_executable(Example main.cpp)
 
 # Find assembly and link it to your target
 find_package(assembly CONFIG REQUIRED)
-target_link_libraries(Example PRIVATE MrowrLib::assembly)
+target_link_libraries(Example PRIVATE assembly::assembly)
 ```
 
 #### `vcpkg.json`

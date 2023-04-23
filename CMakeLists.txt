@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 project(assembly VERSION 0.1.0 LANGUAGES CXX)
-set(namespace MrowrLib)
+set(namespace assembly)
 
 option(BUILD_EXAMPLE "Build the example target" ON)
 
@@ -64,6 +64,6 @@ if(BUILD_EXAMPLE)
     find_package(spdlog CONFIG REQUIRED)
     find_package(memory_util CONFIG REQUIRED)
     add_executable(Example Example.cpp)
-    target_link_libraries(Example PRIVATE ${PROJECT_NAME} spdlog::spdlog MrowrLib::memory_util)
+    target_link_libraries(Example PRIVATE ${PROJECT_NAME} spdlog::spdlog memory_util::memory_util)
     target_compile_features(Example PRIVATE cxx_std_20)
 endif()
