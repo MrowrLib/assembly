@@ -134,7 +134,9 @@ auto disassembler32 = Assembly::Disassembler::Configure32();
 auto disassembler64 = Assembly::Disassembler::Configure64();
 
 // And then disassembly using the `Disassemble` method:
-std::vector<std::string> disassembled = disassembler.Disassemble({ 0xB8, 0x69, 0x00, 0x00, 0x00, 0xC3 });
+std::vector<std::string> disassembled = disassembler.Disassemble({
+    0xB8, 0x69, 0x00, 0x00, 0x00, 0xC3
+});
 // mov eax, 0x69
 // ret
 ```
