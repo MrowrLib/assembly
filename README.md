@@ -122,10 +122,8 @@ The disassembler is provided by [zydis](https://github.com/zyantific/zydis).
 You can directly set the Zydis configuration by constructing your own `Assembly::Disassembler`.
 
 ```cpp
-auto disassembler = Assembly::Disassembler();
-
 // You can directly supply all Zydis configuration options via the `Disassembler` constructor or the `Disassembler::Configure` method:
-auto disassemblyer = Assembly::Disassembler(
+auto disassembler = Assembly::Disassembler(
     ZYDIS_DISASSEMBLER_MODE_LONG_COMPAT_32, // Disassembler mode
     ZYDIS_ADDRESS_WIDTH_32, // Address width
     ZYDIS_FORMATTER_STYLE_INTEL, // Formatter style
