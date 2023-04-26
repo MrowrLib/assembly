@@ -69,7 +69,7 @@ target_link_libraries(Example PRIVATE assembly::assembly)
         {
             "kind": "git",
             "repository": "https://github.com/MrowrLib/Packages.git",
-            "baseline": "6e1884a73e89d614682de6c28107ef888d99f8a1",
+            "baseline": "26b274d290c6b45b05268fccf5fd3352cedb0392",
             "packages": ["mrowr-assembly"]
         }
     ]
