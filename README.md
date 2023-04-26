@@ -1,11 +1,11 @@
-# `#include <assembly>`
+# `#include <assembly.h>`
 
 ```cpp
-#include <assembly>
+#include <assembly.h>
 
 void Example() {
     // Generate bytes from assembly-like syntax (provided by xbyak)
-    auto bytes = Assembly::GetBytes([](Assembly::Code& code) {
+    auto bytes = Assembly::Generate([](Assembly::Code& code) {
         BeginAssembly;
         code.mov(eax, 0x69);
         code.ret();
@@ -86,10 +86,10 @@ I was frequently using xbyak and zydis in my projects, so I decided to make a ve
 ## How?
 
 ```cpp
-#include <assembly>
+#include <assembly.h>
 
 void Example() {
-    auto bytes = Assembly::GetBytes([](Assembly::Code& code) {
+    auto bytes = Assembly::Generate([](Assembly::Code& code) {
         BeginAssembly;
         code.mov(eax, 0x69);
         code.ret();
@@ -113,6 +113,27 @@ void Example() {
     // mov eax, 0x69
     // ret
 }
+```
+
+### Zydis
+
+The disassembler is provided by [zydis](https://github.com/zyantific/zydis).
+
+You can directly set the Zydis configuration by constructing your own `Assembly::Disassembler`.
+
+```cpp
+auto disassembler = Assembly::Disassembler();
+
+// You can directly supply all Zydis configuration options via the `Disassembler` constructor or the `Disassembler::Configure` method:
+auto disassemblyer = Assembly::Disassembler(
+    ZYDIS_DISASSEMBLER_MODE_LONG_COMPAT_32, // Disassembler mode
+    ZYDIS_ADDRESS_WIDTH_32, // Address width
+    ZYDIS_FORMATTER_STYLE_INTEL, // Formatter style
+);
+
+// Or use helpers for configuring 32-bit and 64-bit disassemblers:
+auto disassembler32 = Assembly::Disassembler::Configure32();
+auto disassembler64 = Assembly::Disassembler::Configure64();
 ```
 
 ## License
