@@ -81,7 +81,7 @@ target_link_libraries(Example PRIVATE assembly::assembly)
 
 ## Why?
 
-I was frequently using xbyak and zydis in my projects, so I decided to make a very wrapper for them.
+I was frequently using xbyak and zydis in my projects, so I decided to make a very simple wrapper for them.
 
 ## How?
 
